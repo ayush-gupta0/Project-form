@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Data</title>
+    <style>
+      #f2 {
+          border: 2px solid black;
+          width: 400px;
+          padding: 5px;
+          background-color: aqua;
+      }
+
+    </style>
+</head>
+<body>
+<center>
+  {% if key2 %}
+  <form id="f2" action="{% url 'update' pk=key2.id %}" method="post">
+    {% csrf_token %}
+
+    <h3>Name </h3>
+    <input type="text" name="f_name" value="{{key2.Name}}">
+    <h3>UserName</h3>
+    <input type="text" name="f_username" value="{{key2.UserName}}">
+    <h3>Company Name </h3>
+    <input type="text" name="C_name" value="{{key2.CompanyName}}">
+    <br><br>
+    <input type="submit" value="Update">
+
+
+  </form>
+  {% endif %}
+</center>
+</body>
+</html>

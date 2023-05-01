@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #form1 {
+            border: 2px solid black;
+            width: 400px;
+            padding: 5px;
+            background-color: aqua;
+        }
+
+    </style>
+
+</head>
+<body>
+    <center>
+    <form id="form1"  action="{% url 'insert' %}" method="post">
+        {% csrf_token %}
+
+        <h3> Create Data </h3>
+        <label>Name :</label>
+        <input type="text" name="f_name">
+        <br><br>
+
+        <label>UserName :</label>
+        <input type="text" name="f_username">
+        <br><br>
+
+
+        <label>Company Name :</label>
+        <input type="text"  name="C_name">
+        <br><br>
+
+        <input type="submit" value="Create">
+
+    </form>
+    </center>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Data</title>
+    <style>
+        #customers {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #04AA6D;
+          color: white;
+        }
+
+        #f1 {
+            margin-left: 1100px;
+        }
+
+        div{
+            border: 2px solid black;
+            width: 200px;
+            background-color: #04AA6D;
+        }
+        h2{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<center>
+    <div>
+    <h2> Company Data </h2>
+    </div>
+</center>
+
+<!--<div class="btn">-->
+<!--	<button type="button" class="btn"  value="Add Data">Add Data</button>-->
+<!--</div>-->
+<form id="f1" action="{% url 'insertpage' %}">
+    <input id="add" type="submit" value="Add Data" />
+</form>
+<br>
+
+<table id="customers">
+  <tr>
+
+    <th>ID</th>
+    <th>Name </th>
+    <th>UserName</th>
+    <th>CompanyName</th>
+    <th>Edit</th>
+    <th>Delete</th>
+<!--    <th>Edit</th>-->
+<!--    <th>Delete</th>-->
+  </tr>
+    {% for i in key1 %}
+  <tr>
+    <td>{{i.id}}</td>
+    <td>{{i.Name}}</td>
+    <td>{{i.UserName}}</td>
+    <td>{{i.CompanyName}}</td>
+    <td>
+        <form class="" name="EditForm" action="{% url 'editpage' pk=i.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Edit">
+        </form>
+    </td>
+    <td>
+        <form name="DeleteForm" action="{% url 'delete' pk=i.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+    </td>
+  </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
